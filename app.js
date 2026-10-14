@@ -1,7 +1,7 @@
 'use strict';
 /* ===== CONFIG ===== */
 const CONFIG = {
-  MONETAG_ZONE_ID: '',   // SETUP PLACEHOLDER: main zone ID (digits) from the Monetag dashboard. Empty = ads "unavailable".
+  MONETAG_ZONE_ID: '12030537',   // SETUP PLACEHOLDER: main zone ID (digits) from the Monetag dashboard. Empty = ads "unavailable".
   AD_MODE: 'sdk',        // 'sdk' = Monetag Rewarded Interstitial (reward only on reward_event_type 'valued') | 'smartlink' = sponsor redirect, unverified
   SMARTLINK_URL: '',     // SETUP PLACEHOLDER: your Monetag Direct Link / SmartLink (HTTPS) from the dashboard
   MOCK_MODE: false,      // DEV ONLY. Never unlocks a video. Keep false in production.
