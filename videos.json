@@ -1,0 +1,49 @@
+[
+  {
+    "id": "video-001",
+    "title": "Example Video One",
+    "description": "A sample description. Replace with your own.",
+    "thumbnail": "https://YOUR-IMAGE-HOST/example-1.webp",
+    "megaUrl": "https://mega.nz/file/AAAAAAAA#PLACEHOLDER_KEY_1",
+    "category": "General",
+    "duration": "05:30",
+    "tags": [
+      "trending",
+      "latest"
+    ],
+    "published": true,
+    "date": "2026-10-10"
+  },
+  {
+    "id": "video-002",
+    "title": "Example Video Two",
+    "description": "Another placeholder entry. Links and images here are NOT real.",
+    "thumbnail": "https://YOUR-IMAGE-HOST/example-2.webp",
+    "megaUrl": "https://mega.nz/file/BBBBBBBB#PLACEHOLDER_KEY_2",
+    "category": "Tutorials",
+    "duration": "12:04",
+    "published": true,
+    "date": "2026-10-01"
+  },
+  {
+    "id": "video-003",
+    "title": "Hidden Example (not shown)",
+    "description": "published=false hides an entry.",
+    "thumbnail": "https://YOUR-IMAGE-HOST/example-3.webp",
+    "megaUrl": "https://mega.nz/file/CCCCCCCC#PLACEHOLDER_KEY_3",
+    "category": "General",
+    "published": false,
+    "date": "2026-09-20"
+  },
+  {
+    "id": "video-004",
+    "title": "Scheduled Example (hidden until its date)",
+    "description": "Future date = not visible yet.",
+    "thumbnail": "https://YOUR-IMAGE-HOST/example-4.webp",
+    "megaUrl": "https://mega.nz/file/DDDDDDDD#PLACEHOLDER_KEY_4",
+    "category": "General",
+    "duration": "03:10",
+    "date": "2099-01-01",
+    "published": true
+  }
+]
