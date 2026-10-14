@@ -1,9 +1,9 @@
 [
   {
     "id": "video-001",
-    "title": "Example Video One",
+    "title": "Best Video Ever",
     "description": "A sample description. Replace with your own.",
-    "thumbnail": "https://YOUR-IMAGE-HOST/example-1.webp",
+    "thumbnail": "https://iili.io/BZudEge.md.jpg",
     "megaUrl": "https://mega.nz/file/AAAAAAAA#PLACEHOLDER_KEY_1",
     "category": "General",
     "duration": "05:30",
@@ -16,9 +16,9 @@
   },
   {
     "id": "video-002",
-    "title": "Example Video Two",
+    "title": "New video",
     "description": "Another placeholder entry. Links and images here are NOT real.",
-    "thumbnail": "https://YOUR-IMAGE-HOST/example-2.webp",
+    "thumbnail": "https://iili.io/BZuHhYb.md.jpg",
     "megaUrl": "https://mega.nz/file/BBBBBBBB#PLACEHOLDER_KEY_2",
     "category": "Tutorials",
     "duration": "12:04",
