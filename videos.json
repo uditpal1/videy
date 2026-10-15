@@ -118,5 +118,127 @@
     "tags": ["viral-template", "capcut", "short-videos", "tutorial"],
     "published": true,
     "date": "2026-10-15"
+  },
+  
+  {
+    "id": "video-011",
+    "title": "CapCut Trending Effects Editing Tutorial",
+    "description": "Learn to combine trending visual effects, smooth transitions, and music to create engaging CapCut edits for social media.",
+    "thumbnail": "https://iili.io/nhWWFGj.md.jpg",
+    "megaUrl": "https://mega.nz/file/L2aBcD3e#RandomKey_11",
+    "category": "CapCut Tutorials",
+    "duration": "05:40",
+    "tags": ["capcut", "trending-effects", "editing", "tutorial"],
+    "published": true,
+    "date": "2026-10-15"
+  },
+  {
+    "id": "video-012",
+    "title": "Creative CapCut Template Editing",
+    "description": "Explore a creative template-based editing workflow and learn how to personalize clips, music, and timing in CapCut.",
+    "thumbnail": "https://iili.io/nhWWdZu.jpg",
+    "megaUrl": "https://mega.nz/file/M3dEfG4h#RandomKey_12",
+    "category": "CapCut Templates",
+    "duration": "04:50",
+    "tags": ["capcut", "creative-template", "reels", "editing"],
+    "published": true,
+    "date": "2026-10-15"
+  },
+  {
+    "id": "video-013",
+    "title": "Smooth Transition Editing in CapCut",
+    "description": "Discover ways to make clips flow naturally using transition effects, precise timing, and simple editing techniques.",
+    "thumbnail": "https://iili.io/nhWW3Cb.md.jpg",
+    "megaUrl": "https://mega.nz/file/N4gHiJ5k#RandomKey_13",
+    "category": "CapCut Tutorials",
+    "duration": "06:15",
+    "tags": ["smooth-transitions", "capcut", "effects", "tutorial"],
+    "published": true,
+    "date": "2026-10-15"
+  },
+  {
+    "id": "video-014",
+    "title": "CapCut Reel Template Setup Guide",
+    "description": "Learn the basics of using reel templates, replacing sample clips, adjusting the sequence, and preparing your final edit.",
+    "thumbnail": "https://iili.io/nhWWHu9.jpg",
+    "megaUrl": "https://mega.nz/file/P5jKlM6n#RandomKey_14",
+    "category": "CapCut Templates",
+    "duration": "03:45",
+    "tags": ["reel-template", "capcut", "beginner", "guide"],
+    "published": true,
+    "date": "2026-10-15"
+  },
+  {
+    "id": "video-015",
+    "title": "Cinematic CapCut Editing Techniques",
+    "description": "Learn editing techniques for cinematic-looking videos, including color adjustments, clip timing, and visual transitions.",
+    "thumbnail": "https://iili.io/nhWWq3Q.md.jpg",
+    "megaUrl": "https://mega.nz/file/Q6mNoP7q#RandomKey_15",
+    "category": "CapCut Tutorials",
+    "duration": "07:20",
+    "tags": ["cinematic", "capcut", "color-grading", "editing"],
+    "published": true,
+    "date": "2026-10-15"
+  },
+  {
+    "id": "video-016",
+    "title": "CapCut Music Beat Sync Template",
+    "description": "Understand how to align video clips with music beats and customize a template for energetic short-form content.",
+    "thumbnail": "https://iili.io/nhWWK6x.jpg",
+    "megaUrl": "https://mega.nz/file/R7rStU8v#RandomKey_16",
+    "category": "CapCut Templates",
+    "duration": "05:05",
+    "tags": ["beat-sync", "music", "capcut", "template"],
+    "published": true,
+    "date": "2026-10-15"
+  },
+  {
+    "id": "video-017",
+    "title": "Aesthetic CapCut Effects Tutorial",
+    "description": "Explore aesthetic visual effects and editing combinations to give your videos a consistent and creative appearance.",
+    "thumbnail": "https://iili.io/nhWWBaV.md.jpg",
+    "megaUrl": "https://mega.nz/file/S8wXyZ9a#RandomKey_17",
+    "category": "CapCut Tutorials",
+    "duration": "06:30",
+    "tags": ["aesthetic", "capcut", "visual-effects", "tutorial"],
+    "published": true,
+    "date": "2026-10-15"
+  },
+  {
+    "id": "video-018",
+    "title": "How to Personalize CapCut Templates",
+    "description": "Customize ready-made templates by replacing footage, changing the music, adjusting text, and refining clip timing.",
+    "thumbnail": "https://iili.io/nhWWC8B.md.jpg",
+    "megaUrl": "https://mega.nz/file/T9bCdE1f#RandomKey_18",
+    "category": "CapCut Templates",
+    "duration": "04:25",
+    "tags": ["customization", "capcut", "templates", "editing"],
+    "published": true,
+    "date": "2026-10-15"
+  },
+  {
+    "id": "video-019",
+    "title": "Advanced CapCut Editing Workflow",
+    "description": "Explore a more organized editing workflow using clip arrangement, transitions, effects, and final video adjustments.",
+    "thumbnail": "https://iili.io/nhWWnyP.md.jpg",
+    "megaUrl": "https://mega.nz/file/U1fGhI2j#RandomKey_19",
+    "category": "CapCut Tutorials",
+    "duration": "08:10",
+    "tags": ["advanced-editing", "capcut", "workflow", "effects"],
+    "published": true,
+    "date": "2026-10-15"
+  },
+  {
+    "id": "video-020",
+    "title": "Trending CapCut Shorts Template Guide",
+    "description": "Learn how to adapt a ready-made CapCut template for short videos by arranging clips, matching timing, and refining the result.",
+    "thumbnail": "https://iili.io/nhWWxu1.md.jpg",
+    "megaUrl": "https://mega.nz/file/V2kLmN3o#RandomKey_20",
+    "category": "CapCut Templates",
+    "duration": "05:35",
+    "tags": ["shorts", "trending-template", "capcut", "tutorial"],
+    "published": true,
+    "date": "2026-10-15"
   }
+
 ]
