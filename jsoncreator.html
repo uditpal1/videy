@@ -1,0 +1,633 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Multi Video JSON Generator</title>
+
+<style>
+:root {
+  --bg: #0b1020;
+  --panel: #131b2e;
+  --field: #0c1425;
+  --border: #293750;
+  --text: #edf3ff;
+  --muted: #93a4bf;
+  --accent: #7c6cff;
+  --green: #20c997;
+  --red: #ff647c;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 20px;
+  background: var(--bg);
+  color: var(--text);
+  font-family: system-ui, Arial, sans-serif;
+}
+
+.container {
+  max-width: 1000px;
+  margin: auto;
+}
+
+header {
+  margin: 10px 0 25px;
+}
+
+header h1 {
+  font-size: clamp(25px, 5vw, 38px);
+  margin: 0 0 8px;
+}
+
+header p, .muted {
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+.badge {
+  display: inline-block;
+  padding: 6px 11px;
+  background: #242147;
+  color: #bdb5ff;
+  border-radius: 20px;
+  font-size: 12px;
+  margin-bottom: 12px;
+}
+
+.panel, .video-card {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 18px;
+  margin-bottom: 18px;
+}
+
+.topbar, .card-heading, .actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.card-heading {
+  margin-bottom: 18px;
+}
+
+.card-heading h3 {
+  margin: 0;
+  font-size: 17px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 15px;
+}
+
+.field {
+  min-width: 0;
+}
+
+.field.full {
+  grid-column: 1 / -1;
+}
+
+label {
+  display: block;
+  font-size: 13px;
+  color: #c5d1e6;
+  margin-bottom: 7px;
+}
+
+input, textarea {
+  display: block;
+  width: 100%;
+  padding: 12px;
+  border-radius: 9px;
+  border: 1px solid var(--border);
+  background: var(--field);
+  color: white;
+  font: inherit;
+  font-size: 14px;
+  outline: none;
+}
+
+input:focus, textarea:focus {
+  border-color: var(--accent);
+}
+
+textarea {
+  min-height: 85px;
+  resize: vertical;
+}
+
+input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  accent-color: var(--accent);
+}
+
+.checkbox-row {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding-top: 24px;
+}
+
+button {
+  border: 0;
+  border-radius: 9px;
+  padding: 12px 15px;
+  cursor: pointer;
+  font-weight: 650;
+  font-size: 14px;
+}
+
+button:active {
+  transform: scale(.98);
+}
+
+.primary {
+  background: var(--accent);
+  color: white;
+}
+
+.success {
+  background: var(--green);
+  color: #06251d;
+}
+
+.secondary {
+  background: #26334b;
+  color: white;
+  border: 1px solid #394966;
+}
+
+.danger {
+  background: #3a1e30;
+  color: #ff9aab;
+  border: 1px solid #693247;
+}
+
+.small {
+  padding: 8px 11px;
+  font-size: 12px;
+}
+
+.output {
+  width: 100%;
+  min-height: 350px;
+  font-family: monospace;
+  line-height: 1.6;
+  white-space: pre;
+  tab-size: 2;
+}
+
+.output-status {
+  color: var(--muted);
+  font-size: 13px;
+  margin: 12px 0;
+}
+
+.notice {
+  border-left: 3px solid var(--accent);
+  padding: 10px 12px;
+  background: #191c36;
+  border-radius: 5px;
+  font-size: 13px;
+  color: #c8c9ed;
+  line-height: 1.6;
+  margin-bottom: 18px;
+}
+
+footer {
+  text-align: center;
+  padding: 20px 0;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+@media (max-width: 600px) {
+  body {
+    padding: 12px;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .panel, .video-card {
+    padding: 14px;
+  }
+
+  .actions button {
+    flex: 1 1 130px;
+  }
+
+  .output {
+    min-height: 280px;
+    font-size: 12px;
+  }
+}
+</style>
+</head>
+
+<body>
+<div class="container">
+
+  <header>
+    <span class="badge">JSON TOOLKIT · V1.0</span>
+    <h1>Multi-Video JSON Generator</h1>
+    <p>
+      Enter multiple video details, generate valid JSON,
+      copy the result or download your videos.json file.
+    </p>
+  </header>
+
+  <div class="notice">
+    <strong>How to use:</strong>
+    Fill in the video details, tap Add More Video for
+    additional entries, then click Generate JSON.
+    All data is processed locally in your browser.
+  </div>
+
+  <section class="panel">
+    <div class="topbar">
+      <div>
+        <strong>Video Entries</strong>
+        <div class="muted" id="count">1 video added</div>
+      </div>
+      <button class="primary" id="addBtn" type="button">
+        + Add More Video
+      </button>
+    </div>
+  </section>
+
+  <div id="videoList"></div>
+
+  <section class="panel">
+    <div class="actions">
+      <button class="primary" id="generateBtn" type="button">
+        Generate JSON
+      </button>
+      <button class="secondary" id="clearBtn" type="button">
+        Clear All
+      </button>
+    </div>
+    <p class="muted">
+      Generate JSON after editing your entries.
+      The output below updates automatically when you generate.
+    </p>
+  </section>
+
+  <section class="panel">
+    <div class="topbar">
+      <div>
+        <strong>Generated JSON</strong>
+        <div class="muted" id="outputCount">No JSON generated yet</div>
+      </div>
+    </div>
+
+    <div class="actions" style="margin:15px 0">
+      <button class="success" id="copyBtn" type="button">
+        Copy JSON
+      </button>
+      <button class="secondary" id="downloadBtn" type="button">
+        Download videos.json
+      </button>
+    </div>
+
+    <textarea
+      id="jsonOutput"
+      class="output"
+      spellcheck="false"
+      placeholder="Your generated JSON will appear here..."
+      aria-label="Generated JSON output"
+    ></textarea>
+
+    <div id="status" class="output-status" aria-live="polite">
+      Ready to generate.
+    </div>
+  </section>
+
+  <footer>
+    Multi-Video JSON Generator · Works on mobile and desktop
+  </footer>
+</div>
+
+<script>
+"use strict";
+
+const videoList = document.getElementById("videoList");
+const jsonOutput = document.getElementById("jsonOutput");
+const statusBox = document.getElementById("status");
+
+let nextNumber = 1;
+let generatedJSON = "";
+
+function makeId(number) {
+  return "video-" + String(number).padStart(3, "0");
+}
+
+function today() {
+  const now = new Date();
+  const local = new Date(
+    now.getTime() - now.getTimezoneOffset() * 60000
+  );
+  return local.toISOString().slice(0, 10);
+}
+
+function updateCount() {
+  const count = videoList.querySelectorAll(".video-card").length;
+  document.getElementById("count").textContent =
+    count + (count === 1 ? " video added" : " videos added");
+}
+
+function addVideo(data = {}) {
+  const number = nextNumber++;
+
+  const card = document.createElement("section");
+  card.className = "video-card";
+
+  card.innerHTML = `
+    <div class="card-heading">
+      <h3 class="card-title">Video Entry</h3>
+      <button type="button" class="danger small remove-btn">
+        Remove
+      </button>
+    </div>
+
+    <div class="grid">
+      <div class="field">
+        <label>Video ID *</label>
+        <input data-key="id" required
+          placeholder="video-001">
+      </div>
+
+      <div class="field">
+        <label>Title *</label>
+        <input data-key="title" required
+          placeholder="CapCut Cinematic Editing Tutorial">
+      </div>
+
+      <div class="field full">
+        <label>Description *</label>
+        <textarea data-key="description" required
+          placeholder="Write the video description..."></textarea>
+      </div>
+
+      <div class="field full">
+        <label>Thumbnail URL *</label>
+        <input data-key="thumbnail" type="url" required
+          placeholder="https://iili.io/example.jpg">
+      </div>
+
+      <div class="field full">
+        <label>Mega URL *</label>
+        <input data-key="megaUrl" type="url" required
+          placeholder="https://mega.nz/file/...">
+      </div>
+
+      <div class="field">
+        <label>Category *</label>
+        <input data-key="category" required
+          placeholder="CapCut Tutorials">
+      </div>
+
+      <div class="field">
+        <label>Duration *</label>
+        <input data-key="duration" required
+          placeholder="05:30">
+      </div>
+
+      <div class="field full">
+        <label>Tags (comma separated)</label>
+        <input data-key="tags"
+          placeholder="capcut, cinematic, editing, tutorial">
+      </div>
+
+      <div class="field">
+        <label>Published Date *</label>
+        <input data-key="date" type="date" required>
+      </div>
+
+      <div class="field checkbox-row">
+        <input data-key="published" type="checkbox" checked>
+        <label style="margin:0">Published</label>
+      </div>
+    </div>
+  `;
+
+  card.querySelector('[data-key="id"]').value =
+    data.id ?? makeId(number);
+
+  card.querySelector('[data-key="title"]').value =
+    data.title ?? "";
+
+  card.querySelector('[data-key="description"]').value =
+    data.description ?? "";
+
+  card.querySelector('[data-key="thumbnail"]').value =
+    data.thumbnail ?? "";
+
+  card.querySelector('[data-key="megaUrl"]').value =
+    data.megaUrl ?? "";
+
+  card.querySelector('[data-key="category"]').value =
+    data.category ?? "CapCut Tutorials";
+
+  card.querySelector('[data-key="duration"]').value =
+    data.duration ?? "";
+
+  card.querySelector('[data-key="tags"]').value =
+    Array.isArray(data.tags) ? data.tags.join(", ") : (data.tags ?? "");
+
+  card.querySelector('[data-key="date"]').value =
+    data.date ?? today();
+
+  card.querySelector('[data-key="published"]').checked =
+    data.published ?? true;
+
+  card.querySelector(".card-title").textContent =
+    "Video Entry · " + makeId(number);
+
+  card.querySelector(".remove-btn").addEventListener("click", () => {
+    card.remove();
+    updateCount();
+    statusBox.textContent =
+      "Entry removed. Generate JSON to update the output.";
+  });
+
+  videoList.appendChild(card);
+  updateCount();
+
+  card.scrollIntoView({
+    behavior: "smooth",
+    block: "nearest"
+  });
+}
+
+function collectVideos() {
+  const cards = [...videoList.querySelectorAll(".video-card")];
+
+  if (cards.length === 0) {
+    throw new Error("Please add at least one video.");
+  }
+
+  const seenIds = new Set();
+
+  return cards.map((card, index) => {
+    const get = key =>
+      card.querySelector(`[data-key="${key}"]`);
+
+    const requiredFields = [
+      "id", "title", "description", "thumbnail",
+      "megaUrl", "category", "duration", "date"
+    ];
+
+    for (const key of requiredFields) {
+      const field = get(key);
+      field.value = field.value.trim();
+
+      if (!field.value) {
+        throw new Error(
+          `Video ${index + 1}: Please fill in ${key}.`
+        );
+      }
+
+      if (!field.checkValidity()) {
+        field.reportValidity();
+        throw new Error(
+          `Video ${index + 1}: Please check the ${key} field.`
+        );
+      }
+    }
+
+    const id = get("id").value;
+
+    if (seenIds.has(id)) {
+      throw new Error("Duplicate video ID found: " + id);
+    }
+
+    seenIds.add(id);
+
+    const tags = get("tags").value
+      .split(",")
+      .map(tag => tag.trim())
+      .filter(Boolean);
+
+    return {
+      id: id,
+      title: get("title").value,
+      description: get("description").value,
+      thumbnail: get("thumbnail").value,
+      megaUrl: get("megaUrl").value,
+      category: get("category").value,
+      duration: get("duration").value,
+      tags: tags,
+      published: get("published").checked,
+      date: get("date").value
+    };
+  });
+}
+
+function generateJSON() {
+  try {
+    const videos = collectVideos();
+
+    generatedJSON = JSON.stringify(videos, null, 2);
+    jsonOutput.value = generatedJSON;
+
+    document.getElementById("outputCount").textContent =
+      videos.length + (videos.length === 1
+        ? " video in JSON"
+        : " videos in JSON");
+
+    statusBox.textContent =
+      "Valid JSON generated successfully.";
+
+    return true;
+  } catch (error) {
+    statusBox.textContent = error.message;
+    return false;
+  }
+}
+
+document.getElementById("addBtn").addEventListener("click", () => {
+  addVideo();
+});
+
+document.getElementById("generateBtn").addEventListener("click", () => {
+  generateJSON();
+});
+
+document.getElementById("clearBtn").addEventListener("click", () => {
+  if (!confirm("Remove all video entries and generated JSON?")) return;
+
+  videoList.innerHTML = "";
+  jsonOutput.value = "";
+  generatedJSON = "";
+  nextNumber = 1;
+
+  document.getElementById("outputCount").textContent =
+    "No JSON generated yet";
+
+  addVideo();
+  statusBox.textContent = "Cleared. Add your video details.";
+});
+
+document.getElementById("copyBtn").addEventListener("click", async () => {
+  if (!generatedJSON && !generateJSON()) return;
+
+  try {
+    await navigator.clipboard.writeText(generatedJSON);
+    statusBox.textContent = "JSON copied to clipboard!";
+  } catch {
+    jsonOutput.focus();
+    jsonOutput.select();
+
+    try {
+      const copied = document.execCommand("copy");
+      statusBox.textContent = copied
+        ? "JSON copied to clipboard!"
+        : "Select the JSON above and copy it manually.";
+    } catch {
+      statusBox.textContent =
+        "Select the JSON above and copy it manually.";
+    }
+  }
+});
+
+document.getElementById("downloadBtn").addEventListener("click", () => {
+  if (!generatedJSON && !generateJSON()) return;
+
+  const blob = new Blob([generatedJSON], {
+    type: "application/json;charset=utf-8"
+  });
+
+  const url = URL.createObjectURL(blob);
+  const link = document.createElement("a");
+
+  link.href = url;
+  link.download = "videos.json";
+  document.body.appendChild(link);
+  link.click();
+  link.remove();
+
+  setTimeout(() => URL.revokeObjectURL(url), 1000);
+
+  statusBox.textContent = "Download started: videos.json";
+});
+
+// Start with one empty video form.
+addVideo();
+</script>
+</body>
+</html>
