@@ -1,4 +1,4 @@
-# CineGrid — Telegram Mini App video catalogue
+  # CineGrid — Telegram Mini App video catalogue
 
 Static HTML/CSS/vanilla JS. Browse thumbnails → preview → "Watch Video" → Monetag Rewarded Interstitial → MEGA share link (same context via `window.location.assign`).
 
